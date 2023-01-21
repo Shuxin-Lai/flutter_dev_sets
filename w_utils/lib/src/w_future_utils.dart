@@ -1,7 +1,10 @@
 import 'dart:async';
 
+typedef Resolver<T> = void Function(T value);
+typedef Rejector = void Function(Object reason);
+
 typedef Executor<T> = void Function(
-    {void Function(T value) resolve, void Function(Object reason) reject});
+    {required Resolver<T> resolve, required Rejector reject});
 
 class WFutureUtils {
   static bool isFuture(dynamic v) {
@@ -12,7 +15,7 @@ class WFutureUtils {
     return isFuture(v) == false;
   }
 
-  static Future<T> createFuture<T>(Executor executor) {
+  static Future<T> createFuture<T>(Executor<T> executor) {
     final c = Completer<T>();
     return Future(() {
       try {

@@ -18,6 +18,25 @@ class WListUtils {
     return isEmpty(v) == false;
   }
 
+  static bool hasElement(List list) {
+    return list != null && list.isNotEmpty;
+  }
+
+  static void forEach<T>(
+      List<T> list, void Function(T element, int index) method) {
+    if (hasElement(list) == false) {
+      return;
+    }
+
+    for (var i = 0; i < list.length; i++) {
+      var element = list[i];
+      try {
+        method(element, i);
+        // ignore: empty_catches
+      } catch (err) {}
+    }
+  }
+
   static int findIndex<T>(
       List<T> list, ListIteratorTypeGuard<T, bool> predicate) {
     if (isEmpty(list)) {
