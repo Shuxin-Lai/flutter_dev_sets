@@ -13,8 +13,8 @@ class WFutureUtils {
   }
 
   static Future<T> createFuture<T>(Executor executor) {
-    final c = new Completer<T>();
-    return new Future(() {
+    final c = Completer<T>();
+    return Future(() {
       try {
         executor(resolve: (value) {
           if (c.isCompleted == false) {
