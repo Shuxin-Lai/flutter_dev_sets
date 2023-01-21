@@ -1,4 +1,4 @@
-name: w_utils
+name: w_store
 description: A new Flutter package project.
 version: 0.0.1
 homepage:
@@ -10,8 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flustars: ^2.0.1
-  dio: ^4.0.0
+  sp_util: ^2.0.0
+  w_utils:
+    path: ../w_utils/
 
 dev_dependencies:
   flutter_test:
