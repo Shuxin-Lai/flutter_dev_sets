@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class SerializeUtil {
   static String stringify(dynamic v, {String defaultVal = ''}) {
     if (v == null) {
@@ -5,5 +7,11 @@ class SerializeUtil {
     }
 
     return v.toString();
+  }
+
+  static String jsonify(
+    Object value,
+  ) {
+    return json.encode(value);
   }
 }

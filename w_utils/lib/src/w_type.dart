@@ -1,0 +1,1 @@
+typedef VoidFn = void Function();
