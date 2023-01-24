@@ -101,7 +101,61 @@ class _MyHomePageState extends State<MyHomePage> {
                   final res = await WWidgetHelpers.showConfirmDialog(context);
                   print('res: ${res.toString()}');
                 },
-                child: Text('click me'))
+                child: Text('click me')),
+            Container(
+              child: const Text('w_column'),
+            ),
+            Container(
+              child: WColumn(gap: 8, children: [
+                Container(
+                  width: 120,
+                  height: 20,
+                  color: Colors.red,
+                ),
+                Container(
+                  width: 120,
+                  height: 20,
+                  color: Colors.blue,
+                ),
+                Container(
+                  width: 120,
+                  height: 20,
+                  color: Colors.deepOrangeAccent,
+                ),
+                Container(
+                  width: 120,
+                  height: 20,
+                  color: Colors.yellow,
+                ),
+              ]),
+            ),
+            Container(
+              child: const Text('w_row'),
+            ),
+            Container(
+              child: WRow(gap: 8, children: [
+                Container(
+                  width: 20,
+                  height: 20,
+                  color: Colors.red,
+                ),
+                Container(
+                  width: 20,
+                  height: 20,
+                  color: Colors.blue,
+                ),
+                Container(
+                  width: 20,
+                  height: 20,
+                  color: Colors.deepOrangeAccent,
+                ),
+                Container(
+                  width: 20,
+                  height: 20,
+                  color: Colors.yellow,
+                ),
+              ]),
+            )
           ],
         ),
       ),

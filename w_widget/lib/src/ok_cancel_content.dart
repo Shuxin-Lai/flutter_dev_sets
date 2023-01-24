@@ -5,7 +5,7 @@ import 'package:w_utils/w_utils.dart';
 import 'package:w_widget/src/w_column.dart';
 import 'package:w_widget/src/w_divider.dart';
 import 'package:w_widget/src/w_font_size.dart';
-import 'package:w_widget/src/w_widget.dart';
+import 'package:w_widget/src/w_widget_helpers.dart';
 
 typedef Callback = Function(WConfirmDialogType);
 
