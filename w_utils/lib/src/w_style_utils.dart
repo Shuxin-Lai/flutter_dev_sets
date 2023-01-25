@@ -53,4 +53,8 @@ class WStyleUtils {
   static double getScreenHeight(BuildContext context, [double scale = 1]) {
     return ScreenUtil.getScreenH(context) * scale;
   }
+
+  static double getSp(double fontSize) {
+    return ScreenUtil.getInstance().getSp(fontSize);
+  }
 }
