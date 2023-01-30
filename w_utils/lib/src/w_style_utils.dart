@@ -1,6 +1,8 @@
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
 
+typedef Integer = Map<String?, double>;
+
 class WSize {
   late double _left;
   late double _right;
@@ -29,6 +31,48 @@ class WSize {
 }
 
 class WStyleUtils {
+  static T _g<T>({
+    double? all,
+    double? left,
+    double? right,
+    double? top,
+    double? bottom,
+    double? vertical,
+    double? horizontal,
+  }) {
+    final _left = left ?? horizontal ?? all ?? 0;
+    final _right = right ?? horizontal ?? all ?? 0;
+    final _top = top ?? vertical ?? all ?? 0;
+    final _bottom = bottom ?? vertical ?? all ?? 0;
+
+    if (T is EdgeInsets) {
+      return EdgeInsets.only(
+          left: _left, right: _right, bottom: _bottom, top: _top) as T;
+    }
+
+    throw ErrorDescription('Invalid type');
+  }
+
+  static EdgeInsets getEdgeInsets({
+    double? all,
+    double? left,
+    double? right,
+    double? top,
+    double? bottom,
+    double? vertical,
+    double? horizontal,
+  }) {
+    return _g<EdgeInsets>(
+        all: all,
+        left: left,
+        right: right,
+        bottom: bottom,
+        top: top,
+        vertical: vertical,
+        horizontal: horizontal);
+  }
+
+  @Deprecated('Use [getEdgeInsets]')
   static EdgeInsets getPadding(WSize size) {
     return EdgeInsets.only(
       left: size.left,

@@ -1,5 +1,9 @@
 # 开发技巧
 
+## 统一 api
+
+### 统一方向 api
+
 ## 自定义组件
 
 ### 避免组件销毁后 setState
@@ -11,6 +15,49 @@ abstract class MyState<T extends StatefulWidget> extends State<T> {
     if (mounted) {
       fn();
     }
+  }
+}
+```
+
+### app 生命周期监听
+
+```dart
+
+class LifeCycleWidget extends StatefulWidget {
+  const LifeCycleWidget({Key? key, required this.child, this.listener})
+      : super(key: key);
+
+  final Widget child;
+  final void Function(AppLifecycleState state)? listener;
+
+  @override
+  State<LifeCycleWidget> createState() => _LifeCycleWidgetState();
+}
+
+class _LifeCycleWidgetState extends State<LifeCycleWidget>
+    with WidgetsBindingObserver {
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (widget.listener != null) {
+      widget.listener!(state);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance?.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance?.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return widget.child;
   }
 }
 ```

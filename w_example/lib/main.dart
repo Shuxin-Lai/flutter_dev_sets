@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:w_example/src/life_cycle_widget.dart';
 import 'package:w_example/src/my_state.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(LifeCycleWidget(
+    child: const MyApp(),
+    listener: (state) {
+      print('state: ${state.toString()}');
+    },
+  ));
 }
 
 class MyApp extends StatelessWidget {
